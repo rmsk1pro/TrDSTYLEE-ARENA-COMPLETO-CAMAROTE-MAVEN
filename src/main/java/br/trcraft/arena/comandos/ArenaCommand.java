@@ -112,7 +112,6 @@ public class ArenaCommand implements CommandExecutor {
                     player.sendMessage(plugin.getConfig().getString("mensagens.sem_permissao", "§6§lARENA §cVocê não tem permissão para usar este comando."));
                     return true;
                 }
-
                 plugin.reloadConfig();
                 ConfigManager.reloadConfig();
                 plugin.loadArenasConfig();
@@ -125,7 +124,7 @@ public class ArenaCommand implements CommandExecutor {
                 plugin.itemIntegrityFixer = new ItemIntegrityFixer(plugin.getConfig());
                 Bukkit.getPluginManager().registerEvents(plugin.itemIntegrityFixer, plugin);
 
-                player.sendMessage(plugin.getConfig().getString("mensagens.reload_sucesso", "§a✔ Configuração da Arena recarregada com sucesso!"));
+                player.sendMessage(ConfigManager.getMensagem("reload_sucesso"));
             }
 
             case "camarote" -> {
