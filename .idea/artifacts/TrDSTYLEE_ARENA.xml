@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="TrDSTYLEE-ARENA">
+    <output-path>$PROJECT_DIR$/out/artifacts/TrDSTYLEE_ARENA</output-path>
+    <root id="archive" name="TrDSTYLEE-ARENA.jar">
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/zaxxer/HikariCP/5.1.0/HikariCP-5.1.0.jar" path-in-jar="/" />
+      <element id="module-output" name="TrDSTYLEE-ARENA-COMPLETO-CAMAROTE" />
+    </root>
+  </artifact>
+</component>

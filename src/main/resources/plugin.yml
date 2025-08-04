@@ -1,0 +1,25 @@
+name: Arena
+main: br.trcraft.arena.Main
+version: 1.0
+author: TrDSTYLEE
+api-version: 1.21
+depend:
+  - Vault
+  - nChat
+  - Multiverse-Core
+
+commands:
+  arena:
+    description: Comandos para entrar e gerenciar a Arena
+    usage: /arena <entrar|sair|abandonar|setentrada|setsaida|top|reload>
+    permission: arena.use
+    permission-message: "&cVoce nao tem permissao para usar comandos basicos da arena."
+
+permissions:
+  arena.admin:
+    description: Permite usar comandos administrativos da arena (setentrada, setsaida, reload)
+    default: op
+
+  arena.use:
+    description: Permite usar comandos basicos da arena (entrar, sair, abandonar, top)
+    default: true

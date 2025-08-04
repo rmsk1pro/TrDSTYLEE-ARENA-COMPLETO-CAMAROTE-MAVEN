@@ -1,0 +1,93 @@
+################################################################################
+#                                                                              #
+#                   Configuração principal do plugin ARENA                     #
+#                                                                              #
+################################################################################
+
+
+# Configurações do MySQL para conexão ao banco de dados
+mysql:
+  enable: false             # Define se o MySQL está habilitado (true = ativo / false = desativa e impede o plugin de funcionar)
+  host: localhost          # Endereço do servidor MySQL
+  port: 3306               # Porta do MySQL (padrão 3306)
+  database: arena          # Nome do banco de dados
+  user: root               # Usuário do banco de dados
+  password: ''             # Senha do banco (deixe vazio se não tiver)
+
+# Itens de proteção na arena
+protection-items:
+  name: "&e&lARENA"             # Nome exibido para os itens protegidos da arena.
+                            # Pode conter códigos de cores Minecraft (exemplo: "§6ARENA").
+                            #
+                            # Essa marca de nome serve para identificar os itens do kit da arena,
+                            # protegendo-os contra uso fora da arena.
+                            #
+                            # Funcionamento:
+                            # - Os itens do kit ganham esse nome personalizado.
+                            # - Jogadores só podem sair da arena com itens que possuam essa marca.
+                            # - Itens sem essa marca, se detectados no inventário fora da arena,
+                            #   serão automaticamente removidos para evitar exploits e bugs.
+                            #
+                            # Objetivo:
+                            # - Impedir que jogadores buguem ou abusem ficando com itens do kit fora da arena.
+                            # - Garantir que os itens da arena sejam exclusivos e controlados.
+                            #
+                            # Para personalizar a cor e estilo, use códigos de cor do Minecraft, por exemplo:
+                            # "§6ARENA" (dourado), "§cARENA" (vermelho), "§bARENA" (azul claro), etc.
+
+# Configurações diversas
+configuracoes:
+  tempo_espera_kill_millis: 180000  # Tempo de espera entre kills para contagem (milissegundos).
+                                    # Exemplo: 180000 = 3 minutos.
+
+# Mensagens customizadas (com códigos de cor Minecraft §)
+mensagens:
+  # Mensagens para kills e restrições de IP
+  ip_invalido: "§6§lARENA §cIP inválido, kill não foi contada."  
+  mesmo_ip: "§6§lARENA §cVocê não pode ganhar kills de jogadores com mesmo IP."
+  kill_valida: "§a§l+1 kill §7(kit restaurado)"  # Mensagem enviada ao jogador quando uma kill válida é contabilizada.
+  kill_invalida: "§6§lARENA §eVocê já matou esse jogador recentemente. Kill não foi contada."  
+
+  # Mensagens para morte e saída da arena
+  morreu_na_arena: "§6§lARENA §cVocê morreu na arena, seus itens foram limpos."
+  morte_jogador: "§6§lARENA §cVocê morreu na arena!"
+  nao_esta_na_arena: "§6§lARENA §cVocê não está na arena!"
+  ja_na_arena: "§6§lARENA §cVocê já está na arena!"
+  inventario_nao_vazio: "§6§lARENA §cVocê só pode entrar na arena com inventário vazio!"
+  localizacao_nao_configurada: "§6§lARENA §cLocalização da arena não configurada! Contate um administrador."
+
+  saida_contagem_ja_ativa: "§cVocê já está saindo da arena!"  # Aviso quando o jogador tenta iniciar saída que já está em andamento.
+  saida_contagem_iniciada: "§eSaída da arena iniciada. Aguarde {segundos} segundos e não tome dano para não cancelar!"
+  saiu_da_arena: "§a✔ Você saiu da Arena!"  # Confirmação de saída da arena.
+
+  saida_titulo: "§6Saindo da Arena..."  # Título mostrado durante a contagem regressiva de saída.
+  saida_subtitulo: "§e{segundos} segundo(s) restantes"  # Subtítulo com tempo restante.
+
+  saida_cancelada_dano_recebido: "§6§lARENA §cSaída da arena cancelada porque você tomou dano!"
+  saida_cancelada_dano_causado: "§6§lARENA §cSaída da arena cancelada porque você causou dano!"
+
+  teleporte_bloqueado: "§6§lARENA §cVocê não pode teleportar na arena!"
+  drop_bloqueado: "§f✔ §cVocê não pode dropar itens na arena"
+  comando_bloqueado: "§6§lARENA §c§l✖ §fComando bloqueado durante a partida!"
+
+  bonus_pos_kill_titulo: "§6➤ Bônus de Vida Completa por kill!"
+  bonus_pos_kill_subtitulo: "§7Recuperando ❤ e efeitos..."
+  bonus_pos_kill_rodape: "§f❤ HP 100% ▎ Saturação 100% ▎ Efeitos Renovados!"
+
+  # Mensagens e sons de entrada na arena
+  entrada_titulo: "§6⚔ Arena ⚔"
+  entrada_subtitulo: "§7Prepare-se para a batalha!"
+  entrada_chat_linha1: "§6§l➤ §eBem-vindo à §6Arena§e, §f{player}§e!"
+  entrada_chat_linha2: "§7Use seu talento para se destacar e §cmostrar quem manda!"
+  broadcast_entrada: "§6§l[Arena] §fO jogador §e{player} §fentrou na arena! Prepare-se para a batalha!"
+  som_entrada: "ENTITY_WITHER_SPAWN"  # Som tocado quando o jogador entra na arena. Veja lista de sons na documentação oficial da Spigot 1.21.5
+
+# Comandos liberados durante a partida (podem ser usados sem restrição)
+comandos_liberados:
+  - "/arena sair"
+  - "/tell"
+  - "/r"
+  - "/ping"
+  - "/report"
+  - "/g"
+  - "/."
