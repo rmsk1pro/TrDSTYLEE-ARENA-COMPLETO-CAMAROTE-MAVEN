@@ -39,21 +39,16 @@ public class Main extends JavaPlugin implements Listener {
 
         printStatus(true);
 
-        // Config padrão (config.yml)
         saveDefaultConfig();
-
-        // Carregar configurações customizadas
         ConfigManager.loadConfig();
+        ConfigManager.checkAndFixConfig();
         loadArenasConfig();
         ItensConfig.loadItensConfig();
-
-        // Registrar eventos e comandos
         registerEvents();
         registerCommands();
-
-        // Inicializar conexão MySQL
         initializeMySQL();
     }
+
 
     @Override
     public void onDisable() {
@@ -73,11 +68,34 @@ public class Main extends JavaPlugin implements Listener {
             }
             ItensArena.sairTasks.clear();
         }
-
+        
         ItensArena.arena.clear();
         ItensArena.arenaCamarote.clear();
     }
 
+    
+   /** private void debugConfigCompleta() {
+        getLogger().info("========== DEBUG CONFIG ==========");
+        FileConfiguration config = getConfig();
+        imprimirChaves(config, "", config);
+        getLogger().info("========== FIM DEBUG CONFIG ==========");
+    }
+
+    private void imprimirChaves(ConfigurationSection section, String caminho, FileConfiguration config) {
+        for (String chave : section.getKeys(false)) {
+            String caminhoCompleto = caminho.isEmpty() ? chave : caminho + "." + chave;
+            if (section.isConfigurationSection(chave)) {
+                imprimirChaves(section.getConfigurationSection(chave), caminhoCompleto, config);
+            } else {
+                String valor = config.getString(caminhoCompleto);
+                if (valor == null) {
+                    getLogger().warning("⚠️ Chave sem valor: " + caminhoCompleto);
+                } else {
+                    getLogger().info("✔ " + caminhoCompleto + " = " + valor);
+                }
+            }}
+        }*/
+    
     private void registerEvents() {
         Bukkit.getPluginManager().registerEvents(this, this);
         Bukkit.getPluginManager().registerEvents(new Eventos(this), this);
@@ -244,17 +262,17 @@ public class Main extends JavaPlugin implements Listener {
         String cor = ativando ? "§9" : "§c";
         String status = ativando ? "§a§lATIVADO" : "§4§lDESATIVADO";
         String[] msgs = {
-                "",
-                cor + " █████╗ ██████╗ ███████╗███╗   ██╗ █████╗ ",
-                cor + "██╔══██╗██╔══██╗██╔════╝████╗  ██║██╔══██╗",
-                cor + "███████║██████╔╝█████╗  ██╔██╗ ██║███████║",
-                cor + "██╔══██║██╔══██╗██╔══╝  ██║╚██╗██║██╔══██║",
-                cor + "██║  ██║██║  ██║███████╗██║ ╚████║██║  ██║",
-                cor + "╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝╚═╝  ╚═╝",
-                "",
-                "§fStatus: " + status + " §f| §eARENA §6§lRANKS, TOPKILL",
-                "         §fExclusivo §b§lTRCRAFT NETWORK",
-                ""
+            "",
+            cor + " █████╗ ██████╗ ███████╗███╗   ██╗ █████╗ ",
+            cor + "██╔══██╗██╔══██╗██╔════╝████╗  ██║██╔══██╗",
+            cor + "███████║██████╔╝█████╗  ██╔██╗ ██║███████║",
+            cor + "██╔══██║██╔══██╗██╔══╝  ██║╚██╗██║██╔══██║",
+            cor + "██║  ██║██║  ██║███████╗██║ ╚████║██║  ██║",
+            cor + "╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝╚═╝  ╚═╝",
+            "",
+            "§fStatus: " + status + " §f| §eARENA §6§lRANKS, TOPKILL",
+            "         §fExclusivo §b§lTRCRAFT NETWORK",
+            ""
         };
 
         for (String msg : msgs) {
