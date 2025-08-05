@@ -507,7 +507,7 @@ public class ItensArena {
                     if (!(slotObj instanceof Integer slot)) continue;
 
                     if (slot < 0 || slot >= contents.length) {
-                        player.sendMessage("§cSlot inválido no inventário: " + slot);
+                        //player.sendMessage("§cSlot inválido no inventário: " + slot);
                         continue;
                     }
 
