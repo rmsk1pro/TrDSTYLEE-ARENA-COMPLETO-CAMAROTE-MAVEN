@@ -323,6 +323,9 @@ public class ConfigManager {
         if (!config.isSet("mensagens.erro_ao_carregar_item_offhand")) {
             config.set("mensagens.erro_ao_carregar_item_offhand", "§6§lARENA §cErro ao carregar item da mão secundária.");
         }
+        if (!config.isSet("mensagens.kit_aplicado_sucesso")) {
+            config.set("mensagens.kit_aplicado_sucesso", "§a✔ Kit da arena aplicado com sucesso!");
+        }
 
         // Comandos liberados
         if (!config.isSet("comandos_liberados")) {
