@@ -127,6 +127,7 @@ mensagens:
   morto_proibe_camarote: "§6§lARENA §cJogadores mortos não podem entrar no camarote."
   ja_no_camarote: "§6§lARENA §cVocê já está no camarote."
   kit_salvo_sucesso: "§a✔ Kit da arena salvo com sucesso!"
+  kit_aplicado_sucesso: "§a✔ Kit aplicado com sucesso!"
   kit_nao_salvo: "§6§lARENA §cNenhum kit salvo na configuração."
   erro_ao_carregar_kit: "§6§lARENA §cErro ao carregar o kit da arena."
   erro_ao_carregar_item_offhand: "§6§lARENA §cErro ao carregar item da mão secundária."
